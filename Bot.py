@@ -162,7 +162,7 @@ def bug_message(message):
 @bot.message_handler(commands=["send"])
 def send1_message(message):
     if message.from_user.id == 522487188:
-        bot.send_message(-1001219015757, message.text[6::])
+        bot.send_message(761305732, message.text[6::])
 
 @bot.message_handler(commands=["sendkl"])
 def send1_message(message):
