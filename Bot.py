@@ -216,6 +216,12 @@ def rasp_message(message):
     else:
         bot.send_message(message.from_user.id, "Нет прав. Для получения обращайтесь к создателю.")
         bot.send_message(-326941525, message.from_user.first_name + ": " + "Пытался узнать расписание")
+        
+@bot.message_handler(commands=["sendgroup"])
+def sendgroup(message):
+    if message.from_user.id == 522487188:
+        for i in prev:
+            bot.send_message(i, "Завтра на первую пару идёт вторая группа (группа Елены Анатольевны)")    
 
 @bot.message_handler(content_types=["text"])
 def text_message(message):
