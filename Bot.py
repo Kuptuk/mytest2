@@ -17,7 +17,7 @@ my_collection2 = my_database2.rasp
 
 my_collection3 = my_database2.stat
 
-prev = [522487188, 408011007, 761305732, 682106182, 740708453, 482625846, 577722848, 712460966, 384499877, 522789808, 793950542, 700577024, 718854606, 486139314, 518005930, 750174290, 340333734]
+prev = [522487188, 408011007, 761305732, 682106182, 740708453, 482625846, 577722848, 712460966, 384499877, 522789808, 793950542, 700577024, 718854606, 486139314, 518005930, 750174290, 340333734, 836792540]
 
 @bot.message_handler(commands=["start"])
 def start_message(message):
@@ -221,7 +221,7 @@ def rasp_message(message):
 def sendgroup(message):
     if message.from_user.id == 522487188:
         for i in prev:
-            bot.send_message(i, "Завтра на первую пару идёт вторая группа (группа Елены Анатольевны)")    
+            bot.send_message(i, "Завтра на первую пару идёт первая группа (группа ЮН)")    
 
 @bot.message_handler(content_types=["text"])
 def text_message(message):
