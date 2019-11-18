@@ -223,6 +223,10 @@ def sendgroup(message):
         for i in prev:
             bot.send_message(i, "Завтра на первую пару идёт первая группа (группа ЮН)")    
 
+@bot.message_handler(commands=["id"])
+def id_message(message):
+    bot.send_message(str(message.chat.id))
+
 @bot.message_handler(content_types=["text"])
 def text_message(message):
     bot.send_message(-326941525, message.from_user.first_name + ": " + message.text)
