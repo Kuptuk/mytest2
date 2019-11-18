@@ -225,7 +225,7 @@ def sendgroup(message):
 
 @bot.message_handler(commands=["id"])
 def id_message(message):
-    bot.send_message(str(message.chat.id))
+    bot.send_message(message.chat.id,str(message.chat.id))
 
 @bot.message_handler(content_types=["text"])
 def text_message(message):
