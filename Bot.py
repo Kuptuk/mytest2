@@ -229,6 +229,6 @@ def id_message(message):
 
 @bot.message_handler(content_types=["text"])
 def text_message(message):
-    bot.send_message(-326941525, message.from_user.first_name + ": " + message.text)
+    bot.send_message(-1001300249973, message.from_user.first_name + ": " + message.text)
 
 bot.polling()
