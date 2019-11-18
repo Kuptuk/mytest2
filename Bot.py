@@ -21,7 +21,7 @@ prev = [408011007, 761305732, 682106182, 740708453, 482625846, 577722848, 712460
 
 @bot.message_handler(commands=["start"])
 def start_message(message):
-    bot.send_message(message.chat.id, "/dz - узнать дз\n/rasp - показать расписание\n/stat - статистика\n/bug текст - сообщить о баге (сюда можно и кидать идеи)")
+    bot.send_message(message.chat.id, "/dz - узнать дз\n/rasp - показать расписание\n/stat - статистика")
     bot.forward_message(-1001276156234, message.chat.id, message.message_id)
 
 @bot.message_handler(commands=["newdz"])
