@@ -151,7 +151,7 @@ def stat_message(message):
             bot.send_message(message.from_user.id, "Понедельник: 0\nВторник: 0\nСреда: 0\nЧетверг: 0\nПятница: 0")
     except:
         bot.send_message(message.chat.id, "Напишите мне в личку /start. После этого я смогу вам отправлять сообщения")
-    bot.send_message(-1001276156234, call.from_user.first_name + ": " + "Пытался узнать дз на определённую дату")
+    bot.forward_message(-1001276156234, message.chat.id, message.message_id)
 
 @bot.message_handler(commands=["set"])
 def set_message(message):
