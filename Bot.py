@@ -17,12 +17,12 @@ my_collection2 = my_database2.rasp
 
 my_collection3 = my_database2.stat
 
-prev = [522487188, 408011007, 761305732, 682106182, 740708453, 482625846, 577722848, 712460966, 384499877, 522789808, 793950542, 700577024, 718854606, 486139314, 518005930, 750174290, 340333734, 836792540]
+prev = [408011007, 761305732, 682106182, 740708453, 482625846, 577722848, 712460966, 384499877, 522789808, 793950542, 700577024, 718854606, 486139314, 518005930, 750174290, 340333734, 836792540]
 
 @bot.message_handler(commands=["start"])
 def start_message(message):
     bot.send_message(message.chat.id, "/dz - узнать дз\n/rasp - показать расписание\n/stat - статистика\n/bug текст - сообщить о баге (сюда можно и кидать идеи)")
-    bot.send_message(-326941525, message.from_user.first_name + ": " + message.text)
+    bot.forward_message(-1001276156234, message.chat.id, message.message_id)
 
 @bot.message_handler(commands=["newdz"])
 def newdz_message(message):
@@ -63,10 +63,12 @@ def url(message):
             bot.send_message(message.from_user.id, "Выберите дату\nТекущая дата: " + datetime.datetime.now().strftime('%Y-%m-%d'), reply_markup = markup)
         except:
             bot.send_message(message.chat.id, message.from_user.first_name + ", напишите мне в личку /start и я смогу отправлять вам сообщения!")
-        bot.send_message(-326941525, message.from_user.first_name + ": " + message.text)
+        bot.forward_message(-1001276156234, message.chat.id, message.message_id)
     else:
         bot.send_message(message.from_user.id, "Нет прав. Для получения обращайтесь к создателю.")
-        bot.send_message(-326941525, message.from_user.first_name + ": " + "Пытался узнать дз")
+        bot.send_message(-1001276156234, "Пытался узнать дз:")
+        bot.forward_message(-1001276156234, message.chat.id, message.message_id)
+        
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
@@ -113,10 +115,10 @@ def callback_inline(call):
                         bot.send_message(call.from_user.id, "• " + item["ch"] + "\n\n" + item["rasp"])
                     except:
                         bot.send_message(call.message.chat.id, call.from_user.first_name + ", напишите мне в личку /start и я смогу отправлять вам сообщения!")
-        bot.send_message(-326941525, call.from_user.first_name + ": " + call.data)
+        bot.send_message(-1001276156234, call.from_user.first_name + ": " + call.data)
     else:
         bot.send_message(call.from_user.id, "Нет прав. Для получения обращайтесь к создателю.")
-        bot.send_message(-326941525, call.from_user.first_name + ": " + "Пытался узнать дз на определённую дату")
+        bot.send_message(-1001276156234, call.from_user.first_name + ": " + "Пытался узнать дз на определённую дату")
 
 @bot.message_handler(commands=["deletedz"])
 def deletedz_message(message):
@@ -149,29 +151,7 @@ def stat_message(message):
             bot.send_message(message.from_user.id, "Понедельник: 0\nВторник: 0\nСреда: 0\nЧетверг: 0\nПятница: 0")
     except:
         bot.send_message(message.chat.id, "Напишите мне в личку /start. После этого я смогу вам отправлять сообщения")
-    bot.send_message(-326941525, message.from_user.first_name + ": " + message.text)
-
-@bot.message_handler(commands=["bug"])
-def bug_message(message):
-    try:
-        bot.send_message(-326941525, message.from_user.first_name + ": " + " ".join(message.text.split()[1:]))
-        bot.send_message(message.chat.id, "Успешно отправлено, спасибо!")
-    except:
-        bot.send_message(message.chat.id, "Ошибка")
-
-@bot.message_handler(commands=["send"])
-def send1_message(message):
-    if message.from_user.id == 522487188:
-        bot.send_message(761305732, message.text[6::])
-
-@bot.message_handler(commands=["sendkl"])
-def send1_message(message):
-    if message.text[8::] != "":
-        if message.from_user.id == 522487188:
-            bot.send_message(-361703950, message.text[8::])
-            bot.send_message(-326941525, message.from_user.first_name + ": " + message.text)
-    else:
-        bot.send_message(message.chat.id, "Введите текст")
+    bot.send_message(-1001276156234, call.from_user.first_name + ": " + "Пытался узнать дз на определённую дату")
 
 @bot.message_handler(commands=["set"])
 def set_message(message):
@@ -212,10 +192,11 @@ def rasp_message(message):
                 except:
                     bot.send_message(message.chat.id, message.from_user.first_name + ", напишите мне в личку /start и я смогу отправлять вам сообщения!")
                     break
-        bot.send_message(-326941525, message.from_user.first_name + ": " + message.text)
+        bot.forward_message(-1001276156234, message.chat.id, message.message_id)
     else:
         bot.send_message(message.from_user.id, "Нет прав. Для получения обращайтесь к создателю.")
-        bot.send_message(-326941525, message.from_user.first_name + ": " + "Пытался узнать расписание")
+        bot.send_message(-1001276156234, "Пытался узнать расписание:")
+        bot.forward_message(-1001276156234, message.chat.id, message.message_id)
         
 @bot.message_handler(commands=["sendgroup"])
 def sendgroup(message):
@@ -232,6 +213,6 @@ def text_message(message):
     if message.chat.id == -1001448585971:
         bot.forward_message(-1001300249973, message.chat.id, message.message_id)
     else:
-        bot.forward_message(-326941525, message.chat.id, message.message_id)
+        bot.forward_message(-1001276156234, message.chat.id, message.message_id)
 
 bot.polling()
