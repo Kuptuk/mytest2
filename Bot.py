@@ -227,8 +227,11 @@ def sendgroup(message):
 def id_message(message):
     bot.send_message(message.chat.id,str(message.chat.id))
 
-@bot.message_handler(content_types=["text"])
+@bot.message_handler(content_types=["text", 'document', 'audio', 'sticker', 'voice', 'video'])
 def text_message(message):
-    bot.send_message(-1001300249973, message.from_user.first_name + ": " + message.text)
+    if message.chat.id == -1001448585971:
+        bot.forward_message(-1001300249973, message.chat.id, message.message_id)
+    else:
+        bot.forward_message(-326941525, message.chat.id, message.message_id)
 
 bot.polling()
