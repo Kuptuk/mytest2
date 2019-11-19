@@ -208,6 +208,10 @@ def sendgroup(message):
 def id_message(message):
     bot.send_message(message.chat.id,str(message.chat.id))
 
+@bot.message_handler(commands=["sendkl"])
+def sendkl_message(message):
+    bot.send_message(-1001300249973, message.text[7::])
+
 @bot.message_handler(content_types=["text", 'document', 'audio', 'sticker', 'voice', 'video'])
 def text_message(message):
     if message.chat.id == -1001448585971:
