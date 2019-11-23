@@ -48,27 +48,29 @@ def newdz_message(message):
 
 @bot.message_handler(commands=["dz"])
 def url(message):
-    global prev
-    if message.from_user.id in prev:
-        my_cursor = my_collection.find()
-        markup = types.InlineKeyboardMarkup()
-        a = dict()
-        for item in my_cursor:
-            a.update({item["date"]:item["text"]})
-        d1 = dict(sorted(a.items(), key = lambda x:x[0]))
-        for key in d1.keys():
-            btn_my_site=types.InlineKeyboardButton(text=str(key),callback_data=key)
-            markup.add(btn_my_site)
-        try:
-            bot.send_message(message.from_user.id, "Выберите дату\nТекущая дата: " + datetime.datetime.now().strftime('%Y-%m-%d'), reply_markup = markup)
-        except:
-            bot.send_message(message.chat.id, message.from_user.first_name + ", напишите мне в личку /start и я смогу отправлять вам сообщения!")
-        bot.forward_message(-1001276156234, message.chat.id, message.message_id)
+    if message.from_user.id == 408011007:
+        bot.send_message(message.from_user.id, "Выберите дату\nТекущая дата: " + datetime.datetime.now().strftime('%Y-%m-%d'))
     else:
-        bot.send_message(message.from_user.id, "Нет прав. Для получения обращайтесь к создателю.")
-        bot.send_message(-1001276156234, "Пытался узнать дз:")
-        bot.forward_message(-1001276156234, message.chat.id, message.message_id)
-        
+        global prev
+        if message.from_user.id in prev:
+            my_cursor = my_collection.find()
+            markup = types.InlineKeyboardMarkup()
+            a = dict()
+            for item in my_cursor:
+                a.update({item["date"]:item["text"]})
+            d1 = dict(sorted(a.items(), key = lambda x:x[0]))
+            for key in d1.keys():
+                btn_my_site=types.InlineKeyboardButton(text=str(key),callback_data=key)
+                markup.add(btn_my_site)
+            try:
+                bot.send_message(message.from_user.id, "Выберите дату\nТекущая дата: " + datetime.datetime.now().strftime('%Y-%m-%d'), reply_markup = markup)
+            except:
+                bot.send_message(message.chat.id, message.from_user.first_name + ", напишите мне в личку /start и я смогу отправлять вам сообщения!")
+            bot.forward_message(-1001276156234, message.chat.id, message.message_id)
+        else:
+            bot.send_message(message.from_user.id, "Нет прав. Для получения обращайтесь к создателю.")
+            bot.send_message(-1001276156234, "Пытался узнать дз:")
+            bot.forward_message(-1001276156234, message.chat.id, message.message_id)
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
