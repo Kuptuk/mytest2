@@ -48,7 +48,7 @@ def newdz_message(message):
 
 @bot.message_handler(commands=["dz"])
 def url(message):
-    if message.from_user.id == 408011007:
+    if message.from_user.id == 0:
         bot.send_message(message.from_user.id, "Выберите дату\nТекущая дата: " + datetime.datetime.now().strftime('%Y-%m-%d'))
     else:
         global prev
