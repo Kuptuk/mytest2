@@ -214,7 +214,7 @@ def id_message(message):
 def sendkl_message(message):
     bot.send_message(-1001300249973, message.text[7::])
 
-@bot.message_handler(content_types=["text", 'document', 'audio', 'sticker', 'voice', 'video', 'image', 'picture', 'icon'])
+@bot.message_handler(content_types=["text", 'document', 'audio', 'sticker', 'voice', 'video', 'image', 'picture', 'icon', 'photo'])
 def text_message(message):
     if message.chat.id == -1001448585971:
         bot.forward_message(-1001300249973, message.chat.id, message.message_id)
