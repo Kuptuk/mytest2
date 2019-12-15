@@ -204,7 +204,7 @@ def rasp_message(message):
 def sendgroup(message):
     if message.from_user.id == 522487188:
         for i in prev:
-            bot.send_message(i, "Вторая группа завтра идёт на 2 пару, а первая на 3 пару. ДЗ загружено до конца недели.")    
+            bot.send_message(i, "Обновлено дз. Завтра 1 группа (ЮН) идёт на первую пару.")    
 
 @bot.message_handler(commands=["id"])
 def id_message(message):
