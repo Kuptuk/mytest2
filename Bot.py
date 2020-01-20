@@ -212,7 +212,7 @@ def id_message(message):
 
 @bot.message_handler(commands=["sendkl"])
 def sendkl_message(message):
-    bot.send_message(-1001300249973, message.text[7::])
+    bot.send_message(-1001448585971, message.text[7::])
 
 @bot.message_handler(content_types=["text", 'document', 'audio', 'sticker', 'voice', 'video', 'image', 'picture', 'icon', 'photo'])
 def text_message(message):
